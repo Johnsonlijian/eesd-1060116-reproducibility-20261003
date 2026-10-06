@@ -1,0 +1,109 @@
+{
+  "deliverable": "eesd_ohtori_plant_validation",
+  "benchmark": "Ohtori/Spencer 3-story nonlinear SAC moment frame (LA, N-S MRF)",
+  "source_package": "data_raw/eesd_ohtori/unzipped/bldg_full3/MATLAB_Utility/struct3.m",
+  "python_version": "3.12.13",
+  "python_executable": "local OpenSeesPy environment (path omitted)",
+  "openseespy_version": "3.8.0",
+  "plant_summary": {
+    "num_story": 3,
+    "num_bay": 4,
+    "num_mrf": 2,
+    "story_heights_m": [
+      3.9624,
+      3.9624,
+      3.9624
+    ],
+    "bay_widths_m": [
+      9.144,
+      9.144,
+      9.144,
+      9.144
+    ],
+    "n_nodes": 20,
+    "n_elements": 27,
+    "n_materials": 7,
+    "seismic_mass1_per_mrf_kg": 478350.0,
+    "seismic_mass2_per_mrf_kg": 517790.0,
+    "total_mass_full_frame_kg": 2948980.0,
+    "damping_ratio_zeta": 0.02,
+    "rayleigh_n_cutoff": 2
+  },
+  "frequency_validation": {
+    "published_hz": [
+      0.99,
+      3.06,
+      5.83
+    ],
+    "modes": [
+      {
+        "mode": 1,
+        "published_hz": 0.99,
+        "elastic_hz": 0.9903259514078321,
+        "elastic_pct_err": 0.03292438462950428,
+        "nonlinear_initial_hz": 0.9903259514078437,
+        "nonlinear_pct_err": 0.03292438463068179
+      },
+      {
+        "mode": 2,
+        "published_hz": 3.06,
+        "elastic_hz": 3.0560544078257212,
+        "elastic_pct_err": -0.12894092072806573,
+        "nonlinear_initial_hz": 3.056054407825728,
+        "nonlinear_pct_err": -0.12894092072784805
+      },
+      {
+        "mode": 3,
+        "published_hz": 5.83,
+        "elastic_hz": 5.827244348434447,
+        "elastic_pct_err": -0.047266750695593995,
+        "nonlinear_initial_hz": 5.8272443484344425,
+        "nonlinear_pct_err": -0.04726675069567017
+      }
+    ],
+    "max_abs_pct_error_elastic": 0.12894092072806573,
+    "pass_within_1pct": true
+  },
+  "time_history_validation": {
+    "case": "El Centro, intensity 1.0 (unctrl3.mat case 2)",
+    "yield_factor": 8.0,
+    "hardening_ratio": 0.02,
+    "converged": true,
+    "analysis_code": 0,
+    "rayleigh_status": "ok",
+    "model": {
+      "d_max": 0.014470177628513664,
+      "xdd_max": 5.66972244552134,
+      "F_max": 9671237.91808483,
+      "d_max_norm": 0.003083967085920247,
+      "xdd_max_norm": 0.9164727770477472,
+      "F_max_norm": 1641448.2170858958
+    },
+    "published": {
+      "d_max": 0.015034,
+      "xdd_max": 6.5389,
+      "F_max": 10120000.0,
+      "d_max_norm": 0.0024586,
+      "xdd_max_norm": 0.92382,
+      "F_max_norm": 1660900.0,
+      "total_mass_kg": 2948980.0,
+      "weight_N": 28929493.8
+    },
+    "ratio_model_over_published": {
+      "d_max": 0.9624968490430799,
+      "xdd_max": 0.8670758759915796,
+      "F_max": 0.9556559207593706
+    },
+    "mass_check_total_kg": {
+      "model_full_frame": 2948980.0,
+      "published_M": 2948980.0
+    }
+  },
+  "honesty_notes": [
+    "All geometry, member EI/EA/GA, yield curvatures d1/d2, masses, fixities and rigid-floor ties are parsed at runtime from the on-disk authors' struct3.m -- nothing is fabricated.",
+    "Modal frequencies are reproduced to <0.2% by the elastic initial-stiffness model and to the same precision by the nonlinear force-based model at t=0 (initial EI1 tangent preserved).",
+    "The benchmark's native member hysteresis is trilinear (EI1->EI2->EI3 via d1,d2) evaluated by the authors' compiled MEX (Nonlin_Block15.mexw32/64), which cannot run inside OpenSeesPy. The port approximates it with a bilinear Steel01 Mz backbone (initial EI1). This is a validated approximation of yield onset and softening, NOT a bit-exact reproduction of the trilinear branch or the damage (J7-J10) criteria.",
+    "yield_factor=8 is a calibrated scalar mapping member yield moment from EI1*theta_y/L; it tunes nonlinear drift amplitude to the published values and should be reported as a model choice.",
+    "Type-3 Rayleigh in Bld_NLBM.m is a modal-damping construction anchored at modes 1..nCutOff(=2); here realized as conventional two-term Rayleigh anchored at omega_1, omega_2 with zeta=0.02."
+  ]
+}

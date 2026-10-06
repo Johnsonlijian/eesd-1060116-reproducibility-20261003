@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Actuator-Constraint Handling versus Frequency Retuning in Active Seismic Control: A Two-Height Yielding Steel-Frame Benchmark"
+authors:
+  - family-names: Ren
+    given-names: Lijian
+    orcid: "https://orcid.org/0000-0003-1629-4368"
+version: "0.1.3"
+date-released: 2026-10-06
+license: MIT
+repository-code: "https://github.com/Johnsonlijian/eesd-1060116-reproducibility-20261003"
+message: "Reproducibility companion for manuscript 1060116. An archival DOI release has not yet been minted; cite this repository until it is available."

@@ -1,0 +1,161 @@
+{
+  "deliverable": "eesd_ohtori_9story_validation",
+  "benchmark": "Ohtori/Spencer 9-story nonlinear SAC moment frame (LA, N-S MRF)",
+  "source_package": "data_raw/eesd_ohtori/unzipped/bldg_full3/MATLAB_Utility/struct9.m",
+  "ground_truth_mat": "data_raw/eesd_ohtori/unzipped/bldg_full3/MATLAB_Utility/unctrl9.mat",
+  "published_freqs_source": "Ohtori et al. 2004 benchmark report (Report_bldg_full3.pdf): 'first five natural frequencies of the 9-story benchmark evaluation model are: 0.443, 1.18, 2.05, 3.09, and 4.27 Hz'",
+  "python_version": "3.12.13",
+  "python_executable": "local OpenSeesPy environment (path omitted)",
+  "openseespy_version": "3.8.0",
+  "plant_summary": {
+    "num_story_incl_basement": 10,
+    "num_bay": 5,
+    "num_mrf": 2,
+    "story_heights_m": [
+      3.6576,
+      5.4864,
+      3.9624,
+      3.9624,
+      3.9624,
+      3.9624,
+      3.9624,
+      3.9624,
+      3.9624,
+      3.9624
+    ],
+    "bay_widths_m": [
+      9.144,
+      9.144,
+      9.144,
+      9.144,
+      9.144
+    ],
+    "n_nodes": 66,
+    "n_elements": 110,
+    "n_materials_incl_splices": 16,
+    "floor_masses_per_mrf_kg": [
+      481590.0,
+      503490.0,
+      494730.0,
+      494730.0,
+      494730.0,
+      494730.0,
+      494730.0,
+      494730.0,
+      494730.0,
+      534140.0
+    ],
+    "total_mass_full_frame_kg": 9964660.0,
+    "published_M_kg": 9001480.0,
+    "floor_master_nodes": [
+      15,
+      21,
+      27,
+      33,
+      39,
+      45,
+      51,
+      57,
+      63
+    ],
+    "damping_ratio_zeta": 0.02,
+    "rayleigh_n_cutoff": 2
+  },
+  "frequency_validation": {
+    "published_hz": [
+      0.443,
+      1.18,
+      2.05,
+      3.09,
+      4.27
+    ],
+    "modes": [
+      {
+        "mode": 1,
+        "published_hz": 0.443,
+        "elastic_hz": 0.4427271436785673,
+        "elastic_pct_err": -0.06159284908187399,
+        "nonlinear_initial_hz": 0.44272714367852156,
+        "nonlinear_pct_err": -0.061592849092199316
+      },
+      {
+        "mode": 2,
+        "published_hz": 1.18,
+        "elastic_hz": 1.1776506426409366,
+        "elastic_pct_err": -0.19909808127655818,
+        "nonlinear_initial_hz": 1.177650642640922,
+        "nonlinear_pct_err": -0.19909808127780013
+      },
+      {
+        "mode": 3,
+        "published_hz": 2.05,
+        "elastic_hz": 2.0467284090198445,
+        "elastic_pct_err": -0.15958980391001373,
+        "nonlinear_initial_hz": 2.046728409019843,
+        "nonlinear_pct_err": -0.1595898039100787
+      },
+      {
+        "mode": 4,
+        "published_hz": 3.09,
+        "elastic_hz": 3.09460684856348,
+        "elastic_pct_err": 0.14908895027444205,
+        "nonlinear_initial_hz": 3.094606848563489,
+        "nonlinear_pct_err": 0.1490889502747295
+      },
+      {
+        "mode": 5,
+        "published_hz": 4.27,
+        "elastic_hz": 4.274221266135226,
+        "elastic_pct_err": 0.09885869169147798,
+        "nonlinear_initial_hz": 4.274221266135239,
+        "nonlinear_pct_err": 0.09885869169178998
+      }
+    ],
+    "mode1_abs_pct_error": 0.06159284908187399,
+    "max_abs_pct_error_elastic": 0.19909808127655818,
+    "mean_abs_pct_error_elastic": 0.13364567524687318,
+    "freq_match_pct_mode1": 99.93840715091812,
+    "pass_within_2pct": true
+  },
+  "time_history_validation": {
+    "case": "El Centro, intensity 1.0 (unctrl9.mat case 2)",
+    "yield_factor": 8.0,
+    "hardening_ratio": 0.02,
+    "converged": true,
+    "analysis_code": 0,
+    "model": {
+      "d_max": 0.014988532804510537,
+      "xdd_max": 4.687785969933987,
+      "F_max": 15400363.549932724,
+      "d_max_norm": 0.0024308571449970207,
+      "xdd_max_norm": 0.9174037227189736,
+      "F_max_norm": 2569866.66606862
+    },
+    "published": {
+      "d_max": 0.015088288000524164,
+      "xdd_max": 5.41530003089304,
+      "F_max": 17336945.070578758,
+      "d_max_norm": 0.002484986493378978,
+      "xdd_max_norm": 0.9783680444935057,
+      "F_max_norm": 2848272.6193820196,
+      "total_mass_kg": 9001480.0,
+      "weight_N": 88304518.80000001
+    },
+    "ratio_model_over_published": {
+      "d_max": 0.9933885676088525,
+      "xdd_max": 0.8656558165182441,
+      "F_max": 0.8882974184458563
+    },
+    "mass_check_total_kg": {
+      "model_full_frame": 9964660.0,
+      "published_M": 9001480.0
+    }
+  },
+  "honesty_notes": [
+    "All geometry, member EI/EA/GA, yield curvatures, masses, fixities, rigid-floor ties and the five splice materials (12-16) are parsed/evaluated at runtime from the authors' struct9.m.",
+    "Mode-1 frequency reproduced by the elastic initial-stiffness model; nonlinear force-based model matches at t=0 (initial EI1 tangent preserved).",
+    "Bilinear Steel01 Mz surrogate for the trilinear compiled MEX -- validated approximation of yield onset/softening, NOT bit-exact; damage indices J7-J10 out of scope.",
+    "yield_factor=8 carried over from the 3-story calibration (same member yield mapping My=yield_factor*EI1*theta_y/L); reported as a model choice, not re-fit per height.",
+    "Type-3 Rayleigh realized as two-term Rayleigh anchored at modes 1,2 with zeta=0.02."
+  ]
+}

@@ -1,0 +1,35 @@
+# Ignore local inputs, caches, and generated scratch files
+.env
+*.key
+*.pem
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+raw_data/
+data_raw/
+external_inputs/
+outputs/
+*.mat
+*.mex*
+*.at2
+*.dat
+*.h5
+*.zip
+*.7z
+*.rar
+*.npz
+!analysis/*.npz
+!reproducibility/results/*.npz
+*.log
+*.aux
+*.out
+*.synctex.gz
+
+# Added after the public-release audit
+/data/   # fema_p695_loader.py default location for restricted records
+/data   # alternative spelling
+manifest.csv   # record manifest for the restricted FEMA set
+rounds/   # this payload lives inside a rounds/ tree
+logs/   # internal logs

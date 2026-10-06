@@ -1,0 +1,164 @@
+{
+  "sweep": [
+    {
+      "title": "EESD authority-allocation mechanism: real-plant time-history evidence",
+      "case": "northrdg_x1.0",
+      "alpha_eff_measured": 0.18302309321654597,
+      "uncontrolled_drift_peak": 0.05014317381535113,
+      "H1_model_fidelity_null_under_saturation": {
+        "corr_u_elastic_vs_softened_CLIP": 0.9938692438221127,
+        "drift_peak_elastic_clip": 0.03604587725068374,
+        "drift_peak_softened_clip": 0.03657472206571967,
+        "abs_drift_peak_diff_clip": 0.0005288448150359282,
+        "sat_frac_elastic_clip": 0.891,
+        "sat_frac_softened_clip": 0.891
+      },
+      "H2_allocation_dominates": {
+        "corr_u_clip_vs_inqp_ELASTIC": 0.9207224338160312,
+        "corr_u_clip_vs_inqp_SOFTENED": 0.8054329229861024,
+        "drift_peak_elastic_clip": 0.03604587725068374,
+        "drift_peak_elastic_inqp": 0.03210914048911086,
+        "drift_peak_softened_clip": 0.03657472206571967,
+        "drift_peak_softened_inqp": 0.0340207164872872
+      },
+      "H3_inqp_deepyield_planmismatch": {
+        "elastic_inqp": {
+          "trigger_t": 3.7299999999999427,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.015253590487461006,
+          "actual_drift_horizon_end": 0.015940902891843946,
+          "rms_pred_minus_actual": 0.0010941245942897215,
+          "pred_over_actual_end": 0.9568837217661869
+        },
+        "softened_inqp": {
+          "trigger_t": 3.7349999999999426,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.01847994886381869,
+          "actual_drift_horizon_end": 0.01643379409422751,
+          "rms_pred_minus_actual": 0.0007403675008005422,
+          "pred_over_actual_end": 1.1245089696182762
+        }
+      }
+    },
+    {
+      "title": "EESD authority-allocation mechanism: real-plant time-history evidence",
+      "case": "northrdg_x1.5",
+      "alpha_eff_measured": 0.08972707834738922,
+      "uncontrolled_drift_peak": 0.07584217098183471,
+      "H1_model_fidelity_null_under_saturation": {
+        "corr_u_elastic_vs_softened_CLIP": 0.9845464380800828,
+        "drift_peak_elastic_clip": 0.07043386467498387,
+        "drift_peak_softened_clip": 0.07097373510931394,
+        "abs_drift_peak_diff_clip": 0.0005398704343300698,
+        "sat_frac_elastic_clip": 0.8965,
+        "sat_frac_softened_clip": 0.8971666666666667
+      },
+      "H2_allocation_dominates": {
+        "corr_u_clip_vs_inqp_ELASTIC": 0.4301975501259425,
+        "corr_u_clip_vs_inqp_SOFTENED": 0.8465685712240728,
+        "drift_peak_elastic_clip": 0.07043386467498387,
+        "drift_peak_elastic_inqp": 0.0645248607277639,
+        "drift_peak_softened_clip": 0.07097373510931394,
+        "drift_peak_softened_inqp": 0.0650049995085919
+      },
+      "H3_inqp_deepyield_planmismatch": {
+        "elastic_inqp": {
+          "trigger_t": 3.619999999999945,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.020266474700427233,
+          "actual_drift_horizon_end": 0.02725752720469646,
+          "rms_pred_minus_actual": 0.003376261489122917,
+          "pred_over_actual_end": 0.7435184618264025
+        },
+        "softened_inqp": {
+          "trigger_t": 3.624999999999945,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.025108400003729426,
+          "actual_drift_horizon_end": 0.02776972052517742,
+          "rms_pred_minus_actual": 0.0014391099678522643,
+          "pred_over_actual_end": 0.9041646631252516
+        }
+      }
+    },
+    {
+      "title": "EESD authority-allocation mechanism: real-plant time-history evidence",
+      "case": "northrdg_x2.0",
+      "alpha_eff_measured": 0.08972707834738922,
+      "uncontrolled_drift_peak": 0.09225027701049834,
+      "H1_model_fidelity_null_under_saturation": {
+        "corr_u_elastic_vs_softened_CLIP": 0.9676860430591824,
+        "drift_peak_elastic_clip": 0.1000567160945624,
+        "drift_peak_softened_clip": 0.10013804054644354,
+        "abs_drift_peak_diff_clip": 8.132445188113735e-05,
+        "sat_frac_elastic_clip": 0.9083333333333333,
+        "sat_frac_softened_clip": 0.91
+      },
+      "H2_allocation_dominates": {
+        "corr_u_clip_vs_inqp_ELASTIC": 0.6121784520542617,
+        "corr_u_clip_vs_inqp_SOFTENED": 0.7913328460665451,
+        "drift_peak_elastic_clip": 0.1000567160945624,
+        "drift_peak_elastic_inqp": 0.09447647223885815,
+        "drift_peak_softened_clip": 0.10013804054644354,
+        "drift_peak_softened_inqp": 0.0914222085077532
+      },
+      "H3_inqp_deepyield_planmismatch": {
+        "elastic_inqp": {
+          "trigger_t": 3.569999999999946,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.022785638513291108,
+          "actual_drift_horizon_end": 0.031276085853368225,
+          "rms_pred_minus_actual": 0.004053397645140443,
+          "pred_over_actual_end": 0.7285322920558887
+        },
+        "softened_inqp": {
+          "trigger_t": 3.569999999999946,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.026863348616344387,
+          "actual_drift_horizon_end": 0.030544202481598667,
+          "rms_pred_minus_actual": 0.0018326016048067762,
+          "pred_over_actual_end": 0.8794909159120522
+        }
+      }
+    },
+    {
+      "title": "EESD authority-allocation mechanism: real-plant time-history evidence",
+      "case": "kobe_x1.0",
+      "alpha_eff_measured": 0.18302309321654597,
+      "uncontrolled_drift_peak": 0.042241783568802434,
+      "H1_model_fidelity_null_under_saturation": {
+        "corr_u_elastic_vs_softened_CLIP": 0.9771951348111281,
+        "drift_peak_elastic_clip": 0.03516951311354755,
+        "drift_peak_softened_clip": 0.03535420064186016,
+        "abs_drift_peak_diff_clip": 0.00018468752831260482,
+        "sat_frac_elastic_clip": 0.8489166666666667,
+        "sat_frac_softened_clip": 0.8736666666666667
+      },
+      "H2_allocation_dominates": {
+        "corr_u_clip_vs_inqp_ELASTIC": 0.1084150568390162,
+        "corr_u_clip_vs_inqp_SOFTENED": 0.6211206278861877,
+        "drift_peak_elastic_clip": 0.03516951311354755,
+        "drift_peak_elastic_inqp": 0.030294245793522825,
+        "drift_peak_softened_clip": 0.03535420064186016,
+        "drift_peak_softened_inqp": 0.03047727604976162
+      },
+      "H3_inqp_deepyield_planmismatch": {
+        "elastic_inqp": {
+          "trigger_t": 7.769999999999857,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.015443932087111293,
+          "actual_drift_horizon_end": 0.019454514093140342,
+          "rms_pred_minus_actual": 0.001894305803507224,
+          "pred_over_actual_end": 0.7938482561513485
+        },
+        "softened_inqp": {
+          "trigger_t": 7.779999999999856,
+          "horizon_steps": 20,
+          "pred_drift_horizon_end": 0.02146020720569687,
+          "actual_drift_horizon_end": 0.018821930437972537,
+          "rms_pred_minus_actual": 0.0011634274505930582,
+          "pred_over_actual_end": 1.1401703601242574
+        }
+      }
+    }
+  ]
+}

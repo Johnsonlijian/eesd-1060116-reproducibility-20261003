@@ -1,0 +1,391 @@
+{
+  "title": "EESD multi-height (9-story) replication of the three surviving Ohtori control claims",
+  "central_question": "Are the 3-story surviving claims (saturation-handling dominance; in-QP deep-yield failure with drift-depth predictor; softening-aware null) height-robust at the 9-story, or height-specific?",
+  "architecture": "Controllers DESIGNED on the reduced 9-DOF Guyan-condensed lateral M/K surrogate; EVALUATED closed-loop on the FULL nonlinear OpenSees 9-story plant (modal-validated 0.06% mode-1). Actuators at floor master nodes 15/21/.../63 horizontal DOF; state = reduced floor (disp,vel).",
+  "honesty_scope": "Validated BILINEAR plant (modal + drift/accel); NOT damage indices, NOT the trilinear MEX. yield_factor=8 and cost constants carried from the 3-story un-refitted; U_MAX re-scaled once by the 9/3-story weight ratio.",
+  "n_canonical": 2,
+  "n_deepyield": 0,
+  "canonical_cases": [
+    "elcentro_x1.0",
+    "northrdg_x1.0"
+  ],
+  "deepyield_cases": [],
+  "U_MAX_per_floor_N": 500000.0,
+  "U_MAX_note": "5e5 N/floor, same as the 3-story; probe-calibrated so the elastic-LQR plant saturates on strong records AND still yields (controlled drift 0.7-2.7% at canonical x1, >3.5% on the deep-yield tier). 1e6-1.5e6 over-controls.",
+  "N_horizon": 20,
+  "r_scale": 1e-06,
+  "reduced_model_f_modal_hz": [
+    0.5346750747508596,
+    1.209452100060794,
+    2.0368733581078744,
+    3.077732063488663,
+    4.260743685980445,
+    5.640127459802548,
+    6.989774234385011,
+    8.301775485271213,
+    10.085750666327975
+  ],
+  "reduced_model_mode1_surrogate_note": "Guyan condensation overstiffens mode-1 (~+20%); the modal-exact object is the full plant. Elastic LQR is grid-tuned on the full plant, absorbing the mismatch.",
+  "elapsed_s": 416.34161496162415,
+  "alpha_eff_measurement": {
+    "method": "alpha_eff=(omega_1^tangent_min/omega_1^elastic)^2 from ops.eigen on the live tangent stiffness during the uncontrolled time-history.",
+    "toy_alpha_explicit": 0.02,
+    "toy_sqrt_alpha": 0.1414213562373095,
+    "alpha_design_median_canonical": 0.3097676566107796,
+    "alpha_eff_min_range_canonical": [
+      0.2172375352515647,
+      0.4022977779699945
+    ],
+    "per_case": {
+      "elcentro_x1.0": {
+        "f1_elastic": 0.44272714367852156,
+        "f1_tangent_min": 0.28080831684686025,
+        "alpha_eff_min": 0.4022977779699945,
+        "alpha_eff_p5": 0.9988976017362838,
+        "alpha_eff_driftweighted": 0.927214394399903,
+        "omega_s_predicted_hz": 0.28080831684686025
+      },
+      "northrdg_x1.0": {
+        "f1_elastic": 0.44272714367852156,
+        "f1_tangent_min": 0.20634957693838263,
+        "alpha_eff_min": 0.2172375352515647,
+        "alpha_eff_p5": 0.3462498531142191,
+        "alpha_eff_driftweighted": 0.7713788241750215,
+        "omega_s_predicted_hz": 0.20634957693838263
+      }
+    }
+  },
+  "claim1_saturation_dominance": {
+    "question": "Is saturation-handling (factor B) still the dominant ANOVA variance share at 9-story?",
+    "tuned_elastic_lqr_q_r": {
+      "q_scale": 1000000000000.0,
+      "r_value": 0.0001
+    },
+    "lqr_grid": [
+      {
+        "q_scale": 100000000.0,
+        "r_value": 0.0001,
+        "mean_J": 0.9670181855119495
+      },
+      {
+        "q_scale": 100000000.0,
+        "r_value": 1e-06,
+        "mean_J": 0.5738593517410414
+      },
+      {
+        "q_scale": 10000000000.0,
+        "r_value": 0.0001,
+        "mean_J": 0.5738593517350328
+      },
+      {
+        "q_scale": 10000000000.0,
+        "r_value": 1e-06,
+        "mean_J": 0.4278794809057772
+      },
+      {
+        "q_scale": 1000000000000.0,
+        "r_value": 0.0001,
+        "mean_J": 0.42787948090557076
+      },
+      {
+        "q_scale": 1000000000000.0,
+        "r_value": 1e-06,
+        "mean_J": 0.4474738177974856
+      }
+    ],
+    "overall_2x2_canonical": {
+      "J00_elastic_clip": 0.44998624837922174,
+      "J10_softened_clip": 0.44558926424513357,
+      "J01_elastic_inqp": 0.41380599560221537,
+      "J11_softened_inqp": 0.40733563620323515,
+      "best_cell": "A1B1_softened_inqp",
+      "best_cell_J": 0.40733563620323515,
+      "worst_cell": "A0B0_elastic_clip",
+      "worst_cell_J": 0.44998624837922174,
+      "dJ_total_corner": 0.04265061217598659,
+      "dJ_omega_frequency": 0.005433671766534198,
+      "dJ_sat_saturation": 0.03721694040945239,
+      "share_omega_pct": 12.739961959077101,
+      "share_sat_pct": 87.26003804092291,
+      "anova_effect_A_freq": -0.002716835883267099,
+      "anova_effect_B_sat": -0.018608470204726196,
+      "anova_effect_AB_interaction": -0.0005183438162230103,
+      "ss_A_frac": 0.020855255672431638,
+      "ss_B_frac": 0.9783855996478303,
+      "ss_AB_frac": 0.0007591446797379824,
+      "interaction_contrast_Junits": -0.0010366876324460206,
+      "interaction_sign": "reinforcing"
+    },
+    "overall_2x2_all_incl_deep": {
+      "J00_elastic_clip": 0.44998624837922174,
+      "J10_softened_clip": 0.44558926424513357,
+      "J01_elastic_inqp": 0.41380599560221537,
+      "J11_softened_inqp": 0.40733563620323515,
+      "best_cell": "A1B1_softened_inqp",
+      "best_cell_J": 0.40733563620323515,
+      "worst_cell": "A0B0_elastic_clip",
+      "worst_cell_J": 0.44998624837922174,
+      "dJ_total_corner": 0.04265061217598659,
+      "dJ_omega_frequency": 0.005433671766534198,
+      "dJ_sat_saturation": 0.03721694040945239,
+      "share_omega_pct": 12.739961959077101,
+      "share_sat_pct": 87.26003804092291,
+      "anova_effect_A_freq": -0.002716835883267099,
+      "anova_effect_B_sat": -0.018608470204726196,
+      "anova_effect_AB_interaction": -0.0005183438162230103,
+      "ss_A_frac": 0.020855255672431638,
+      "ss_B_frac": 0.9783855996478303,
+      "ss_AB_frac": 0.0007591446797379824,
+      "interaction_contrast_Junits": -0.0010366876324460206,
+      "interaction_sign": "reinforcing"
+    },
+    "overall_2x2_controllable": {
+      "J00_elastic_clip": 0.44998624837922174,
+      "J10_softened_clip": 0.44558926424513357,
+      "J01_elastic_inqp": 0.41380599560221537,
+      "J11_softened_inqp": 0.40733563620323515,
+      "best_cell": "A1B1_softened_inqp",
+      "best_cell_J": 0.40733563620323515,
+      "worst_cell": "A0B0_elastic_clip",
+      "worst_cell_J": 0.44998624837922174,
+      "dJ_total_corner": 0.04265061217598659,
+      "dJ_omega_frequency": 0.005433671766534198,
+      "dJ_sat_saturation": 0.03721694040945239,
+      "share_omega_pct": 12.739961959077101,
+      "share_sat_pct": 87.26003804092291,
+      "anova_effect_A_freq": -0.002716835883267099,
+      "anova_effect_B_sat": -0.018608470204726196,
+      "anova_effect_AB_interaction": -0.0005183438162230103,
+      "ss_A_frac": 0.020855255672431638,
+      "ss_B_frac": 0.9783855996478303,
+      "ss_AB_frac": 0.0007591446797379824,
+      "interaction_contrast_Junits": -0.0010366876324460206,
+      "interaction_sign": "reinforcing"
+    },
+    "controllable_cases": [
+      "elcentro_x1.0",
+      "northrdg_x1.0"
+    ],
+    "ss_freq_frac": 0.020855255672431638,
+    "ss_sat_frac": 0.9783855996478303,
+    "ss_interaction_frac": 0.0007591446797379824,
+    "saturation_share_pct": 97.83855996478303,
+    "VERDICT_saturation_dominant": true,
+    "per_case_cells": [
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "elastic",
+        "handling": "clip",
+        "J": 0.17197636867060834,
+        "dmax_pct": 0.4051682022619526,
+        "unstable": false
+      },
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "softened",
+        "handling": "clip",
+        "J": 0.171993644465839,
+        "dmax_pct": 0.40216248951648614,
+        "unstable": false
+      },
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "elastic",
+        "handling": "inqp",
+        "J": 0.11959034514422563,
+        "dmax_pct": 0.22282991905789362,
+        "unstable": false
+      },
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "softened",
+        "handling": "inqp",
+        "J": 0.12105789774627536,
+        "dmax_pct": 0.22461286420725635,
+        "unstable": false
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "elastic",
+        "handling": "clip",
+        "J": 0.7279961280878351,
+        "dmax_pct": 2.3554314780565697,
+        "unstable": false
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "softened",
+        "handling": "clip",
+        "J": 0.7191848840244282,
+        "dmax_pct": 2.3065702745383714,
+        "unstable": false
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "elastic",
+        "handling": "inqp",
+        "J": 0.7080216460602051,
+        "dmax_pct": 2.062966869793545,
+        "unstable": false
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "tuning": "softened",
+        "handling": "inqp",
+        "J": 0.6936133746601949,
+        "dmax_pct": 2.1183026454628378,
+        "unstable": false
+      }
+    ]
+  },
+  "claim2_inqp_deepyield_failure": {
+    "question": "Does in-QP still lose to clip at deep yield, and is UNCONTROLLED DRIFT DEPTH (not E_K) the predictor?",
+    "n_inqp_loses_total": 0,
+    "n_inqp_loses_deeptier": 0,
+    "n_inqp_wins": 2,
+    "auc_uncdrift_ranks_inqp_loss": NaN,
+    "auc_clipdrift_ranks_inqp_loss": NaN,
+    "auc_EK_ranks_inqp_loss": NaN,
+    "n_loss_cases": 0,
+    "n_win_cases": 2,
+    "spearman_rho_uncdrift_vs_dJ": NaN,
+    "spearman_rho_clipdrift_vs_dJ": NaN,
+    "spearman_rho_EK_vs_dJ": NaN,
+    "crossover_uncdrift": {
+      "x_cross_bracket": NaN,
+      "bracket_lo_hi": [
+        NaN,
+        NaN
+      ],
+      "separation_purity": NaN,
+      "n_inqp_wins": 2,
+      "n_inqp_loses": 0
+    },
+    "crossover_clipdrift": {
+      "x_cross_bracket": NaN,
+      "bracket_lo_hi": [
+        NaN,
+        NaN
+      ],
+      "separation_purity": NaN,
+      "n_inqp_wins": 2,
+      "n_inqp_loses": 0
+    },
+    "crossover_EK": {
+      "x_cross_bracket": NaN,
+      "bracket_lo_hi": [
+        NaN,
+        NaN
+      ],
+      "separation_purity": NaN,
+      "n_inqp_wins": 2,
+      "n_inqp_loses": 0
+    },
+    "VERDICT_inqp_fails_at_deepyield": false,
+    "VERDICT_driftdepth_predicts_better_than_EK": false,
+    "per_case": [
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "J_clip": 0.17197636867060834,
+        "J_inqp": 0.11959034514422563,
+        "dJ_inqp_minus_clip": -0.052386023526382705,
+        "inqp_wins": true,
+        "E_K": 0.07278560560009695,
+        "alpha_eff_min": 0.4022977779699945,
+        "unc_dmax_pct": 1.4988579483807078,
+        "clip_dmax_pct": 0.4051682022619526
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "J_clip": 0.7279961280878351,
+        "J_inqp": 0.7080216460602051,
+        "dJ_inqp_minus_clip": -0.01997448202762997,
+        "inqp_wins": true,
+        "E_K": 0.22862117582497854,
+        "alpha_eff_min": 0.2172375352515647,
+        "unc_dmax_pct": 2.1801065787913907,
+        "clip_dmax_pct": 2.3554314780565697
+      }
+    ]
+  },
+  "claim3_softening_aware_null": {
+    "question": "Is the softened-vs-elastic LQR margin still ~0 (null) at 9-story?",
+    "f1_elastic_hz": 0.5346750747508596,
+    "mean_J_elastic_canonical": 0.42787948090557076,
+    "mean_J_softened_canonical": 0.4201775495544659,
+    "softened_margin_vs_elastic_canonical": 0.007701931351104863,
+    "softened_margin_vs_elastic_allcases": 0.007701931351104863,
+    "margin_percase_mean_pm_std": [
+      0.00770193135110489,
+      0.0011236440247511525
+    ],
+    "margin_percase_range": [
+      0.006578287326353738,
+      0.008825575375856043
+    ],
+    "n_softened_better": 2,
+    "n_canonical_cases": 2,
+    "iso_margin_vs_elastic": -0.017424038905356376,
+    "median_sqrt_alpha_eff_canonical": 0.5501784798392482,
+    "VERDICT_is_null": true,
+    "VERDICT_softening_helps": false,
+    "per_case": [
+      {
+        "case": "elcentro_x1.0",
+        "record": "elcentro",
+        "intensity": 1.0,
+        "deep": false,
+        "alpha_eff_min": 0.4022977779699945,
+        "LQR_elastic_J": 0.13971450579428704,
+        "LQR_elastic_dmax_pct": 0.23729714260882825,
+        "LQR_softened_J": 0.1331362184679333,
+        "LQR_softened_dmax_pct": 0.22333556495951062,
+        "LQR_iso_softdir_elasticnorm_J": 0.16927811178832586,
+        "LQR_iso_softdir_elasticnorm_dmax_pct": 0.24655724699102147
+      },
+      {
+        "case": "northrdg_x1.0",
+        "record": "northrdg",
+        "intensity": 1.0,
+        "deep": false,
+        "alpha_eff_min": 0.2172375352515647,
+        "LQR_elastic_J": 0.7160444560168545,
+        "LQR_elastic_dmax_pct": 2.094401268747481,
+        "LQR_softened_J": 0.7072188806409985,
+        "LQR_softened_dmax_pct": 2.154505576601992,
+        "LQR_iso_softdir_elasticnorm_J": 0.7213289278335284,
+        "LQR_iso_softdir_elasticnorm_dmax_pct": 2.134243196539828
+      }
+    ]
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "title": "Softening-aware control: is the 1/sqrt(alpha) insight constructively exploitable?",
+  "alpha": 0.02,
+  "n_cases": 10,
+  "cases": [
+    [
+      "elcentro",
+      1.0
+    ],
+    [
+      "elcentro",
+      2.0
+    ],
+    [
+      "elcentro",
+      3.0
+    ],
+    [
+      "hachinohe",
+      2.0
+    ],
+    [
+      "hachinohe",
+      3.0
+    ],
+    [
+      "hachinohe",
+      4.0
+    ],
+    [
+      "kobe",
+      0.5
+    ],
+    [
+      "kobe",
+      1.0
+    ],
+    [
+      "northridge",
+      0.5
+    ],
+    [
+      "northridge",
+      1.0
+    ]
+  ],
+  "baselines": {
+    "LQR_elastic_tuned_mean_J": 0.8452,
+    "MPC_fixed_K0_mean_J": 0.984,
+    "lqr_q_scale": 1000000000000.0,
+    "lqr_r_value": 0.0001
+  },
+  "softening_aware_controllers": {
+    "LQR_softened_design": {
+      "mean_J": 0.7552,
+      "worst_J": 1.0952,
+      "margin_vs_LQR_mean": 0.08997,
+      "margin_vs_LQR_worst": 0.00583,
+      "margin_vs_LQR_n_better": 10,
+      "margin_vs_MPC_mean": 0.22883,
+      "margin_vs_MPC_worst": -0.02011,
+      "margin_vs_MPC_n_better": 9,
+      "n_cases": 10
+    },
+    "GS_LQR_drift": {
+      "mean_J": 0.76145,
+      "worst_J": 1.07954,
+      "margin_vs_LQR_mean": 0.08371,
+      "margin_vs_LQR_worst": -0.0016,
+      "margin_vs_LQR_n_better": 8,
+      "margin_vs_MPC_mean": 0.22258,
+      "margin_vs_MPC_worst": -0.04179,
+      "margin_vs_MPC_n_better": 8,
+      "n_cases": 10
+    },
+    "GS_LQR_drift_hold5": {
+      "mean_J": 0.75191,
+      "worst_J": 1.08011,
+      "margin_vs_LQR_mean": 0.09325,
+      "margin_vs_LQR_worst": -0.00793,
+      "margin_vs_LQR_n_better": 7,
+      "margin_vs_MPC_mean": 0.23212,
+      "margin_vs_MPC_worst": -0.04307,
+      "margin_vs_MPC_n_better": 8,
+      "n_cases": 10
+    },
+    "GS_LQR_oracle": {
+      "mean_J": 0.84193,
+      "worst_J": 1.21983,
+      "margin_vs_LQR_mean": 0.00323,
+      "margin_vs_LQR_worst": -0.01621,
+      "margin_vs_LQR_n_better": 6,
+      "margin_vs_MPC_mean": 0.1421,
+      "margin_vs_MPC_worst": -0.10424,
+      "margin_vs_MPC_n_better": 8,
+      "n_cases": 10
+    },
+    "SA_MPC_drift": {
+      "mean_J": 0.78853,
+      "worst_J": 1.1543,
+      "margin_vs_LQR_mean": 0.05664,
+      "margin_vs_LQR_worst": -0.14334,
+      "margin_vs_LQR_n_better": 9,
+      "margin_vs_MPC_mean": 0.1955,
+      "margin_vs_MPC_worst": -0.17848,
+      "margin_vs_MPC_n_better": 9,
+      "n_cases": 10
+    },
+    "SA_MPC_oracle": {
+      "mean_J": 0.96825,
+      "worst_J": 1.65834,
+      "margin_vs_LQR_mean": -0.12309,
+      "margin_vs_LQR_worst": -0.70183,
+      "margin_vs_LQR_n_better": 2,
+      "margin_vs_MPC_mean": 0.01578,
+      "margin_vs_MPC_worst": -0.03522,
+      "margin_vs_MPC_n_better": 5,
+      "n_cases": 10
+    },
+    "YT_BangBang": {
+      "mean_J": 1.0248,
+      "worst_J": 1.61544,
+      "margin_vs_LQR_mean": -0.17963,
+      "margin_vs_LQR_worst": -0.41468,
+      "margin_vs_LQR_n_better": 2,
+      "margin_vs_MPC_mean": -0.04077,
+      "margin_vs_MPC_worst": -0.32081,
+      "margin_vs_MPC_n_better": 3,
+      "n_cases": 10
+    },
+    "LQR_detuned_elastic_best": {
+      "mean_J": 0.84517,
+      "worst_J": 1.20362,
+      "margin_vs_LQR_mean": 0.0,
+      "margin_vs_LQR_worst": 0.0,
+      "margin_vs_LQR_n_better": 0,
+      "margin_vs_MPC_mean": 0.13886,
+      "margin_vs_MPC_worst": -0.10424,
+      "margin_vs_MPC_n_better": 8,
+      "n_cases": 10
+    }
+  },
+  "honesty_control_detuned_elastic_best_mean_J": 0.8451665228457828,
+  "clear_win_flags_beats_LQR_only_and_beats_both": {
+    "LQR_softened_design": [
+      true,
+      true
+    ],
+    "GS_LQR_drift": [
+      true,
+      true
+    ],
+    "GS_LQR_drift_hold5": [
+      true,
+      true
+    ],
+    "GS_LQR_oracle": [
+      false,
+      false
+    ],
+    "SA_MPC_drift": [
+      true,
+      true
+    ],
+    "SA_MPC_oracle": [
+      false,
+      false
+    ],
+    "YT_BangBang": [
+      false,
+      false
+    ]
+  },
+  "best_softening_aware": "LQR_softened_design",
+  "best_softening_aware_mean_J": 0.7552009137955114,
+  "any_beats_LQR": true,
+  "any_beats_both_LQR_and_MPC": true,
+  "softening_aware_beats_detuned_elastic_DISCRIMINATOR": true,
+  "discriminator_meaning": "If True, the advantage is specifically the softened DESIGN FREQUENCY w_s=w1*sqrt(alpha) (re-pointing the Riccati), since merely backing off the elastic gain (best detuned-elastic LQR) does NOT match it. If False, the advantage is gain-magnitude, not frequency-tracking.",
+  "window_gap_to_true_optimum_rows": [
+    {
+      "record": "elcentro",
+      "scale": 1.0,
+      "unc_peak_pct": 2.035564385798917,
+      "OPT_peak_pct": 1.2274289541722627,
+      "LQR_peak_pct": 1.7973839767583526,
+      "MPC_peak_pct": 1.577205576244733,
+      "LQR_softened_design_peak_pct": 1.7126323825118626,
+      "SA_MPC_oracle_peak_pct": 1.577205576244733,
+      "LQR_soft_closes_frac": 0.10487300881721995,
+      "SA_MPC_closes_frac": 0.2724523537724779,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "elcentro",
+      "scale": 2.0,
+      "unc_peak_pct": 3.7514863184722698,
+      "OPT_peak_pct": 2.6680578471917946,
+      "LQR_peak_pct": 2.8493753168123575,
+      "MPC_peak_pct": 2.982747273713974,
+      "LQR_softened_design_peak_pct": 2.7210919728173426,
+      "SA_MPC_oracle_peak_pct": 3.054712010602502,
+      "LQR_soft_closes_frac": 0.11840499617238229,
+      "SA_MPC_closes_frac": -0.18952491948772812,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "elcentro",
+      "scale": 3.0,
+      "unc_peak_pct": 5.035219068093267,
+      "OPT_peak_pct": 2.7190095479292107,
+      "LQR_peak_pct": 4.3218763089982835,
+      "MPC_peak_pct": 5.23903588129528,
+      "LQR_softened_design_peak_pct": 4.0763460228022845,
+      "SA_MPC_oracle_peak_pct": 5.23903588129528,
+      "LQR_soft_closes_frac": 0.1060052141477287,
+      "SA_MPC_closes_frac": -0.3959743556498441,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "hachinohe",
+      "scale": 2.0,
+      "unc_peak_pct": 5.25613231413087,
+      "OPT_peak_pct": 5.093096018826531,
+      "LQR_peak_pct": 5.093202376901595,
+      "MPC_peak_pct": 5.097930065022814,
+      "LQR_softened_design_peak_pct": 5.0939959200978695,
+      "SA_MPC_oracle_peak_pct": 5.097930065022814,
+      "LQR_soft_closes_frac": -0.0048672793674132955,
+      "SA_MPC_closes_frac": -0.028997764653533074,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "hachinohe",
+      "scale": 3.0,
+      "unc_peak_pct": 5.356001996919263,
+      "OPT_peak_pct": 3.6254347817040564,
+      "LQR_peak_pct": 4.3170457790834424,
+      "MPC_peak_pct": 4.910708365200565,
+      "LQR_softened_design_peak_pct": 4.482701386728622,
+      "SA_MPC_oracle_peak_pct": 4.9069857876919025,
+      "LQR_soft_closes_frac": -0.09572330169480238,
+      "SA_MPC_closes_frac": -0.3408940163789579,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "hachinohe",
+      "scale": 4.0,
+      "unc_peak_pct": 6.528461471452212,
+      "OPT_peak_pct": 4.498131011550699,
+      "LQR_peak_pct": 4.540127233407611,
+      "MPC_peak_pct": 5.56132438066323,
+      "LQR_softened_design_peak_pct": 4.5953360521677835,
+      "SA_MPC_oracle_peak_pct": 5.684120343443009,
+      "LQR_soft_closes_frac": -0.02719203590279135,
+      "SA_MPC_closes_frac": -0.5634516807135383,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "kobe",
+      "scale": 0.5,
+      "unc_peak_pct": 4.405349527358162,
+      "OPT_peak_pct": 4.375569564631965,
+      "LQR_peak_pct": 4.375569564631965,
+      "MPC_peak_pct": 4.652062856939126,
+      "LQR_softened_design_peak_pct": 4.375569564631965,
+      "SA_MPC_oracle_peak_pct": 4.652062856939126,
+      "LQR_soft_closes_frac": 0.0,
+      "SA_MPC_closes_frac": -9.28454124839921,
+      "opt_kind": "warm_baseline"
+    },
+    {
+      "record": "kobe",
+      "scale": 1.0,
+      "unc_peak_pct": 5.725302820900335,
+      "OPT_peak_pct": 3.5928751017873255,
+      "LQR_peak_pct": 4.920891690036012,
+      "MPC_peak_pct": 6.31998746941394,
+      "LQR_softened_design_peak_pct": 5.123845206417312,
+      "SA_MPC_oracle_peak_pct": 6.584686945850543,
+      "LQR_soft_closes_frac": -0.09517486316756324,
+      "SA_MPC_closes_frac": -0.7802352412238351,
+      "opt_kind": "slsqp_3ch"
+    },
+    {
+      "record": "northridge",
+      "scale": 0.5,
+      "unc_peak_pct": 2.242758276323844,
+      "OPT_peak_pct": 1.5880994108639794,
+      "LQR_peak_pct": 1.8965596111666867,
+      "MPC_peak_pct": 1.5880994108639794,
+      "LQR_softened_design_peak_pct": 1.7867513162847206,
+      "SA_MPC_oracle_peak_pct": 1.5880994108639794,
+      "LQR_soft_closes_frac": 0.16773361009146567,
+      "SA_MPC_closes_frac": 0.4711770000793158,
+      "opt_kind": "warm_baseline"
+    },
+    {
+      "record": "northridge",
+      "scale": 1.0,
+      "unc_peak_pct": 5.304371993562902,
+      "OPT_peak_pct": 4.168490917923229,
+      "LQR_peak_pct": 4.479263890257071,
+      "MPC_peak_pct": 4.440353088429133,
+      "LQR_softened_design_peak_pct": 4.405150186859228,
+      "SA_MPC_oracle_peak_pct": 4.440353088429133,
+      "LQR_soft_closes_frac": 0.06524776667848377,
+      "SA_MPC_closes_frac": 0.034256052559045375,
+      "opt_kind": "slsqp_3ch"
+    }
+  ],
+  "yielded_fraction_note": "KEY PHYSICS: plastic OFFSET persists ~90-98% of steps (kinematic hardening leaves a permanent drift once any story has yielded), but ACTIVE plastic FLOW -- the instants the tangent is actually softened to alpha*k -- occupies only ~0.03-3.8% of steps (uncontrolled). This is WHY the online active-flow-scheduled controllers (GS_LQR_oracle, SA_MPC_oracle) barely differ from the elastic baseline (they only re-tune during those rare flow instants), yet the FIXED softened-DESIGN gain wins: it anticipates the softened mode the structure repeatedly visits at the peaks WITHOUT needing to detect the transient flow. The 1/sqrt(alpha) gain is captured by the DESIGN-frequency choice, not by online switching.",
+  "BOTTOM_LINE": "CONSTRUCTIVE POSITIVE: the softening-aware controller 'LQR_softened_design' beats BOTH the tuned elastic LQR (mean margin +0.0900 J over 10/10 cases, worst case +0.0058) and the fixed constrained MPC (mean margin +0.2288 J). The win IS specifically the softened design-frequency: the best plain-DETUNED elastic LQR (best q,r over the grid) only reaches mean J=0.8452, WORSE than the softening-aware 0.7552 -- merely backing off the elastic gain does not recover it, so the gain comes from re-pointing the design to w_s=w1*sqrt(alpha), not from gain magnitude. The 1/sqrt(alpha) insight is constructively exploitable as a new, better controller."
+}
